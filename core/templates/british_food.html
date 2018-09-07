@@ -1,6 +1,22 @@
-<h1>
-    {{ name }}
-</h1>
-<div>
-    {{ description }}
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The latest British Dishes - Today's Special: {{ name }}</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!--  theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/readable/bootstrap.min.css">
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>{{ name }}</h1>
+            <p class="lead">{{ description }}</p>
+        </div>
+        <p>
+            For any feedback on this recipe please open an issue on
+            <a href="https://github.com/meadsteve/british_food_generator">github</a>
+            or tweet <a href="http://twitter.com/meadsteve">@MeadSteve</a>.
+        </p>
+    </body>
+</html>
