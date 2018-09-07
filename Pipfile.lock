@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "709f941965c390d57fb60ac7f5ea9668aff7a791a9949f5af4d7d0773eeb3dd4"
+            "sha256": "f75da3971ef452b02d0e5fe2989b2a6eb4c335ee27b09a17af1a7bedf27f110a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -47,6 +47,13 @@
             "index": "pypi",
             "version": "==19.9.0"
         },
+        "markovify": {
+            "hashes": [
+                "sha256:f016ef58f60a8afb925aa16803538561c4b00375bf0b7f84952c29993805b9a7"
+            ],
+            "index": "pypi",
+            "version": "==0.7.1"
+        },
         "psycopg2": {
             "hashes": [
                 "sha256:0b9e48a1c1505699a64ac58815ca99104aacace8321e455072cee4f7fe7b2698",
@@ -88,6 +95,13 @@
                 "sha256:ffb9ef1de172603304d9d2819af6f5ece76f2e85ec10692a524dd876e72bf277"
             ],
             "version": "==2018.5"
+        },
+        "unidecode": {
+            "hashes": [
+                "sha256:72f49d3729f3d8f5799f710b97c1451c5163102e76d64d20e170aedbbd923582",
+                "sha256:8c33dd588e0c9bc22a76eaa0c715a5434851f726131bd44a6c26471746efabf5"
+            ],
+            "version": "==1.0.22"
         },
         "whitenoise": {
             "hashes": [

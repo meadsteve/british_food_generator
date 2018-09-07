@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 gunicorn = "*"
 django-heroku = "*"
+markovify = "*"
 
 [dev-packages]
 
