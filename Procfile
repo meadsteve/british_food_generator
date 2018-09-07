@@ -1,1 +1,1 @@
-web: gunicorn british_food_generator.wsgi
+web: gunicorn british_food_generator.wsgi  -c gunicorn_conf.py
