@@ -1,0 +1,1 @@
+web: gunicorn britsh_food_generator.wsgi
