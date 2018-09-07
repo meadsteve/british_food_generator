@@ -1,10 +1,10 @@
 import random
 
-name_part_ones = ['spotted', 'toad', 'dick', 'toddy', 'beef', 'clotted', 'bangers',
+name_part_ones = ['spotted', 'toad', 'toddy', 'beef', 'clotted', 'bangers',
                   'ham', 'fish', 'fried', 'jellied', 'black', 'Ploughman\'s',
                   'stottie', 'eccles', 'eaton', 'shepherd\'s']
 name_part_twos = ['hole', 'pie', 'wellington', 'mash', 'tiddly', 'eels', 'pudding',
-                  'stottie', 'pasty', 'tart', 'crumble']
+                  'stottie', 'pasty', 'tart', 'crumble', 'dick']
 joining_words = ['in the', 'and'] + [''] * 5
 suffix = ['in gravy', 'with gravy', 'with chips', 'with mint sauce'] + [''] * 15
 
