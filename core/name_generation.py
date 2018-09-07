@@ -11,9 +11,9 @@ def choose(choices: List[T]) -> T:
 
 name_part_ones = ['spotted', 'toad', 'toddy', 'beef', 'clotted', 'bangers',
                   'ham', 'fish', 'fried', 'jellied', 'black', 'ploughman\'s',
-                  'stottie', 'eccles', 'eaton', 'shepherd\'s', 'knickerbocker']
+                  'stottie', 'eccles', 'eaton', 'shepherd\'s', 'knickerbocker', 'angel']
 name_part_twos = ['hole', 'pie', 'wellington', 'mash', 'tiddly', 'eels', 'pudding',
-                  'stottie', 'pasty', 'tart', 'crumble', 'dick', 'glory']
+                  'stottie', 'pasty', 'tart', 'crumble', 'dick', 'glory', 'delight']
 
 joining_words = one_of_in_x_times(['in the', 'and'], times=3)
 suffix = one_of_in_x_times(['in gravy', 'with gravy', 'with chips', 'with mint sauce'], times=4)
