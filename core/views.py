@@ -7,7 +7,7 @@ from core.name_generation import generate_food_name
 
 def index(request):
     context = {
-        'name': generate_food_name(),
+        'name': generate_food_name().capitalize(),
         'description': 'Pastry stuffed with raisins'
     }
     template = loader.get_template('british_food.html')
