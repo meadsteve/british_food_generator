@@ -6,7 +6,7 @@ __location__ = os.path.realpath(
 
 with open(os.path.join(__location__, 'real_descriptions_of_food.txt')) as f:
     text = f.read()
-text_model = markovify.NewlineText(text)
+text_model = markovify.NewlineText(text, state_size=2)
 
 def generate_food_description():
-    return text_model.make_short_sentence(140)
+    return text_model.make_short_sentence(200, tries=100)
