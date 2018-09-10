@@ -13,10 +13,15 @@
             <h1>{{ name }}</h1>
             <p class="lead">{{ description }}</p>
         </div>
-        <p>
+        <div>
+            <p>You can share this delicious food item with the following link: <br>
+                <a href="{{ perma_link }}">{{ perma_link }}</a>
+            </p>
+        </div>
+        <footer>
             For any feedback on this recipe please open an issue on
             <a href="https://github.com/meadsteve/british_food_generator">github</a>
             or tweet <a href="http://twitter.com/meadsteve">@MeadSteve</a>.
-        </p>
+        </footer>
     </body>
 </html>
