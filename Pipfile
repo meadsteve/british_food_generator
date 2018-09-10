@@ -9,7 +9,8 @@ gunicorn = "*"
 django-heroku = "*"
 markovify = "*"
 
-[dev-packages]
-
 [requires]
 python_version = "3.6"
+
+[dev-packages]
+black = "==18.6b4"
