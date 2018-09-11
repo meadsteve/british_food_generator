@@ -1,3 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 
-# Create your tests here.
+class SmokeTests(TestCase):
+    client = Client()
+
+    def test_the_minimum_possible_works(self):
+        response = self.client.get('/')
+        assert response.status_code == 200
