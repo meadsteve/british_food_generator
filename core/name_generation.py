@@ -34,6 +34,7 @@ name_part_ones = [
     "angel",
     "lardy",
     "jam",
+    "bubble",
 ]
 name_part_twos = [
     "hole",
@@ -53,6 +54,7 @@ name_part_twos = [
     "cake",
     "rolly polly",
     "scratchings",
+    "squeak",
 ]
 
 joining_words = one_of_in_x_times(["in the", "and"], times=3)
