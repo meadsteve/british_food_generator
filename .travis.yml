@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.5"
+  - "3.6"
+env:
+  global:
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+install:
+  - pip install pipenv
+  - pipenv install --dev
+script:
+  - pipenv run mypy --ignore-missing-imports --strict-optional --check-untyped-defs core/
+  - pipenv run black --check british_food_generator core

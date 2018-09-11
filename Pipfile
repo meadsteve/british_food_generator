@@ -14,3 +14,4 @@ python_version = "3.6"
 
 [dev-packages]
 black = "==18.6b4"
+mypy = "*"
