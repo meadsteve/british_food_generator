@@ -11,5 +11,6 @@ install:
   - pipenv install --dev
 script:
   - pipenv run mypy --ignore-missing-imports --strict-optional --check-untyped-defs core/
+  - pipenv run python manage.py migrate
   - pipenv run python manage.py test core
   - pipenv run black --check british_food_generator core
