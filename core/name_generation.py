@@ -35,7 +35,8 @@ name_part_ones = [
     "lardy",
     "jam",
     "bubble",
-    "stargazy"
+    "stargazy",
+    "boiled",
 ]
 name_part_twos = [
     "hole",
