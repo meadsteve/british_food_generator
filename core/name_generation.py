@@ -61,9 +61,9 @@ name_part_twos = [
     "squeak",
 ]
 
-joining_words = one_of_in_x_times(["in the", "and"], times=3)
+joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
 suffix = one_of_in_x_times(
-    ["in gravy", "with gravy", "with chips", "with mint sauce"], times=4
+    ["in gravy", "with gravy", "with chips", "with mint sauce", "with custard"], times=4
 )
 
 
