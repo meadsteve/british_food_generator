@@ -60,6 +60,7 @@ name_part_twos = [
     "rolly polly",
     "scratchings",
     "squeak",
+    "roast",
 ]
 
 joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
