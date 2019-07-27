@@ -63,7 +63,7 @@ name_part_twos = [
 
 joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
 suffix = one_of_in_x_times(
-    ["in gravy", "with gravy", "with chips", "with mint sauce", "with custard"], times=4
+    ["in gravy", "with gravy", "with chips", "with mint sauce", "with custard", "in blankets"], times=4
 )
 
 
