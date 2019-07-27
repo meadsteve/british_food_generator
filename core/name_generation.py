@@ -40,6 +40,8 @@ name_part_ones = [
     "lancashire",
     "devonshire",
     "roast",
+    "pickled",
+    "soused",
 ]
 name_part_twos = [
     "hole",
