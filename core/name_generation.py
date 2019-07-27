@@ -37,6 +37,8 @@ name_part_ones = [
     "bubble",
     "stargazy",
     "boiled",
+    "lancashire",
+    "devonshire",
 ]
 name_part_twos = [
     "hole",
