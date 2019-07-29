@@ -1,1 +1,1 @@
-web: gunicorn british_food_generator.wsgi  -c gunicorn_conf.py
+web: uvicorn british_food_generator:app --port 5000 --workers 4

@@ -4,13 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-gunicorn = "*"
-django-heroku = "*"
+fastapi = "*"
 markovify = "*"
-
-[requires]
-python_version = "3.6"
+uvicorn = "*"
+jinja2 = "*"
 
 [dev-packages]
 black = "==18.6b4"
