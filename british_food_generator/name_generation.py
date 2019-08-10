@@ -78,6 +78,12 @@ suffix = one_of_in_x_times(
     times=4,
 )
 
+# Items which are either boring or rude should be excluded
+banned_list = ["spotted dick", "fish pie"]
+
 
 def generate_food_name() -> str:
-    return f"{choose(name_part_ones)} {choose(joining_words)} {choose(name_part_twos)} {choose(suffix)}"
+    result = None
+    while result in banned_list or result is None:
+        result = f"{choose(name_part_ones)} {choose(joining_words)} {choose(name_part_twos)} {choose(suffix)}"
+    return result
