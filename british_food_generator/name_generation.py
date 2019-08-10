@@ -2,8 +2,8 @@ import random
 from typing import List, TypeVar
 
 
-def one_of_in_x_times(list: List[str], times: int) -> List[str]:
-    return list + ([""] * (times - 1) * len(list))
+def one_of_in_x_times(choices: List[str], times: int) -> List[str]:
+    return choices + ([""] * (times - 1) * len(choices))
 
 
 T = TypeVar("T")
