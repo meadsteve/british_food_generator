@@ -22,8 +22,8 @@ def test_app_serves_some_html_at_the_root():
     assert b"The latest British Dishes" in response.content
 
 
-def test_app_raw_api_end_point_serves_some_json():
-    response = client.get("/raw")
+def test_app_api_end_point_serves_some_json():
+    response = client.get("/api")
     assert response.status_code == 200
     json = response.json()
     assert "name" in json
