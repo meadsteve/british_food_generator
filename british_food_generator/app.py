@@ -22,7 +22,7 @@ class ClassicBritishDish(BaseModel):
 
     class Config:
         schema_extra = {
-            'examples': [
+            "examples": [
                 {
                     "name": "roasted mash",
                     "description": "Finely mashed potato roasted in lard with a side of veg.",

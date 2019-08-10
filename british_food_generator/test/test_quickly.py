@@ -9,6 +9,12 @@ def test_food_name_is_a_string():
     assert type(generate_food_name()) == str
 
 
+def test_no_random_whitespace():
+    food = generate_food_name()
+    assert food[-1] != " "
+    assert food[0] != " "
+
+
 def test_food_description_is_a_string():
     assert type(generate_food_description()) == str
 
