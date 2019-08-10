@@ -13,3 +13,5 @@ gunicorn = "*"
 [dev-packages]
 black = "==18.6b4"
 mypy = "*"
+pytest = "*"
+requests = "*"
