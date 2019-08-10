@@ -31,11 +31,11 @@
         },
         "fastapi": {
             "hashes": [
-                "sha256:15f2c34f6760aeb6a6bd27fa10efffdf1cb779850f3cc9ff47fff5222df48c48",
-                "sha256:eea852115ce3730ee79e2af14f7d2d5f987bd5834817713013d677339da488d5"
+                "sha256:9c09fba80f7d039325f9c6f77ca496dfc5186993ea5a695f108d9ab012dffe20",
+                "sha256:9c26163ab9473d2666c85886b03c9efcded642060ebf981aa093841486ab716e"
             ],
             "index": "pypi",
-            "version": "==0.33.0"
+            "version": "==0.35.0"
         },
         "gunicorn": {
             "hashes": [
@@ -56,7 +56,6 @@
             "hashes": [
                 "sha256:e00cbd7ba01ff748e494248183abc6e153f49181169d8a3d41bb49132ca01dfc"
             ],
-            "markers": "sys_platform != 'win32' and sys_platform != 'cygwin' and platform_python_implementation != 'pypy'",
             "version": "==0.0.13"
         },
         "jinja2": {
@@ -120,9 +119,9 @@
         },
         "starlette": {
             "hashes": [
-                "sha256:d313433ef5cc38e0a276b59688ca2b11b8f031c78808c1afdf9d55cb86f34590"
+                "sha256:849553e6dc8dd4faac5d4383219bdf49b199f3f09d60ce374c2a00a42ab7c77d"
             ],
-            "version": "==0.12.0"
+            "version": "==0.12.7"
         },
         "unidecode": {
             "hashes": [
@@ -133,10 +132,10 @@
         },
         "uvicorn": {
             "hashes": [
-                "sha256:5320b48629564fa914fe8120542608c91f98fcd2278e8454bda9db08467519d1"
+                "sha256:8aa44f9d9c3082ef693950387ea25d376e32944df6d4071dbd8edc3c25a40c74"
             ],
             "index": "pypi",
-            "version": "==0.8.4"
+            "version": "==0.8.6"
         },
         "uvloop": {
             "hashes": [
@@ -151,7 +150,6 @@
                 "sha256:c48692bf4587ce281d641087658eca275a5ad3b63c78297bbded96570ae9ce8f",
                 "sha256:fefc3b2b947c99737c348887db2c32e539160dcbeb7af9aa6b53db7a283538fe"
             ],
-            "markers": "sys_platform != 'win32' and sys_platform != 'cygwin' and platform_python_implementation != 'pypy'",
             "version": "==0.12.2"
         },
         "websockets": {
