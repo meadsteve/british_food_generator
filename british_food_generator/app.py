@@ -4,7 +4,7 @@ from starlette.templating import Jinja2Templates
 
 from british_food_generator.description_generation import generate_food_description
 from british_food_generator.meta import VERSION, DESCRIPTION
-from british_food_generator.models import ClassicBritishDish
+from british_food_generator.models import ClassicBritishDish, CheeckyNandos
 from british_food_generator.name_generation import generate_food_name
 
 app = FastAPI(title="British Food Generator", version=VERSION, description=DESCRIPTION)
@@ -29,6 +29,9 @@ def read_root(
     response_model=ClassicBritishDish,
     summary="The latest British Dishes",
     description="Calling this endpoint will return a randomly selected totally legitimate British dish.",
+    responses={
+        "418": {"model": CheeckyNandos, "description": "Shall we go for a cheeky nandos?"}
+    }
 )
 def raw(
     food_name: str = Depends(generate_food_name),
