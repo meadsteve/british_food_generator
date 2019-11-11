@@ -8,7 +8,6 @@ class ClassicBritishDish(BaseModel):
 
     name: str
     description: str
-    """Foo's initial location - instance variable"""
 
     class Config:
         schema_extra = {
