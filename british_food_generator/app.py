@@ -25,7 +25,9 @@ container[FoodNamer] = FoodNamer()
 
 @app.get("/", include_in_schema=False)
 def read_root(
-    request: Request, namer=container.depends(FoodNamer), desc=container.depends(FoodDescriber)
+    request: Request,
+    namer=container.depends(FoodNamer),
+    desc=container.depends(FoodDescriber),
 ):
     return templates.TemplateResponse(
         "british_food.html",
