@@ -1,17 +1,17 @@
 [[source]]
+name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-name = "pypi"
 
 [packages]
+lagom = "~=0.6.3"
 fastapi = "*"
 markovify = "*"
 uvicorn = "*"
 jinja2 = "*"
-gunicorn = "*"
 
 [dev-packages]
-black = "==18.6b4"
+black = "==19.10b0"
 mypy = "*"
 pytest = "*"
 requests = "*"

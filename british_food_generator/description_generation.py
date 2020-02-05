@@ -1,4 +1,3 @@
-import os
 import markovify
 
 
@@ -10,10 +9,3 @@ class FoodDescriber:
 
     def generate_food_description(self):
         return self._text_model.make_short_sentence(200, tries=100)
-
-
-__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-
-food_describer = FoodDescriber(
-    os.path.join(__location__, "real_descriptions_of_food.txt")
-)

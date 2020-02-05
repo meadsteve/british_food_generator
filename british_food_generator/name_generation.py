@@ -88,6 +88,3 @@ class FoodNamer:
         while result in self.banned_list or result is None:
             result = f"{choose(self.name_part_ones)} {choose(self.joining_words)} {choose(self.name_part_twos)} {choose(self.suffix)}".strip()
         return result
-
-
-food_namer = FoodNamer()

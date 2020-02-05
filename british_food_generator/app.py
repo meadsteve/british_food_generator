@@ -1,26 +1,39 @@
-from fastapi import FastAPI, Depends
+import os
+
+from fastapi import FastAPI
+from lagom.integrations.fast_api import FastApiContainer
 from starlette.requests import Request
 from starlette.templating import Jinja2Templates
 
-from british_food_generator.description_generation import food_describer
+from british_food_generator.description_generation import FoodDescriber
+from british_food_generator.name_generation import FoodNamer
 from british_food_generator.meta import VERSION, DESCRIPTION
 from british_food_generator.models import ClassicBritishDish, CheeckyNandos
-from british_food_generator.name_generation import food_namer
+
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 app = FastAPI(title="British Food Generator", version=VERSION, description=DESCRIPTION)
 
 templates = Jinja2Templates(directory="templates")
 
+container = FastApiContainer()
+container[FoodDescriber] = FoodDescriber(
+    os.path.join(__location__, "real_descriptions_of_food.txt")
+)
+container[FoodNamer] = FoodNamer()
+
 
 @app.get("/", include_in_schema=False)
 def read_root(
-    request: Request,
-    food_name: str = Depends(food_namer.generate_food_name),
-    food_desc: str = Depends(food_describer.generate_food_description),
+    request: Request, namer=container.depends(FoodNamer), desc=container.depends(FoodDescriber)
 ):
     return templates.TemplateResponse(
         "british_food.html",
-        {"name": food_name, "description": food_desc, "request": request},
+        {
+            "name": namer.generate_food_name(),
+            "description": desc.generate_food_description(),
+            "request": request,
+        },
     )
 
 
@@ -36,8 +49,8 @@ def read_root(
         }
     },
 )
-def raw(
-    food_name: str = Depends(food_namer.generate_food_name),
-    food_desc: str = Depends(food_describer.generate_food_description),
-):
-    return {"name": food_name, "description": food_desc}
+def raw(namer=container.depends(FoodNamer), desc=container.depends(FoodDescriber)):
+    return {
+        "name": namer.generate_food_name(),
+        "description": desc.generate_food_description(),
+    }
