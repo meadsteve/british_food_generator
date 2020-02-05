@@ -2,15 +2,15 @@ from starlette.testclient import TestClient
 
 from british_food_generator.app import app
 from british_food_generator.description_generation import food_describer
-from british_food_generator.name_generation import generate_food_name
+from british_food_generator.name_generation import food_namer
 
 
 def test_food_name_is_a_string():
-    assert type(generate_food_name()) == str
+    assert type(food_namer.generate_food_name()) == str
 
 
 def test_no_random_whitespace():
-    food = generate_food_name()
+    food = food_namer.generate_food_name()
     assert food[-1] != " "
     assert food[0] != " "
 
