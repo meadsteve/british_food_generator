@@ -24,4 +24,5 @@ class CheeckyNandos(BaseModel):
     """
     Bants
     """
+
     mate_callum_is_a_legend: bool = True
