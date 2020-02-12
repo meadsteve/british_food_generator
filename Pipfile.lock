@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "673601f36bbf5947f5205e6e651bd281ac59c401503933d54338da6e38f01c72"
+            "sha256": "947204baec8311715a98543e37564c6a3040f336790aa2f06c48df24d4b8a4cb"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -53,11 +53,11 @@
         },
         "lagom": {
             "hashes": [
-                "sha256:5fb73395741a83e492cce6ffa1e8e25280c53207c3a307774f40d6219e7698fa",
-                "sha256:fcaa2f7afa0476ffd9d7c1e6aac97f42f100b6f6ed6b316d9161ed475fb5e9f3"
+                "sha256:e85a5b6ffba14b66489a3d1e7f136ca337713117c5582f500e6cdb1c1fe22248",
+                "sha256:f01f72870312a835e45966f6914aead603a33005ca3e95eb246a5acbc6f72f34"
             ],
             "index": "pypi",
-            "version": "==0.6.3"
+            "version": "==0.6.7"
         },
         "markovify": {
             "hashes": [
@@ -421,10 +421,10 @@
         },
         "zipp": {
             "hashes": [
-                "sha256:ccc94ed0909b58ffe34430ea5451f07bc0c76467d7081619a454bf5c98b89e28",
-                "sha256:feae2f18633c32fc71f2de629bfb3bd3c9325cd4419642b1f1da42ee488d9b98"
+                "sha256:5c56e330306215cd3553342cfafc73dda2c60792384117893f3a83f8a1209f50",
+                "sha256:d65287feb793213ffe11c0f31b81602be31448f38aeb8ffc2eb286c4f6f6657e"
             ],
-            "version": "==2.1.0"
+            "version": "==2.2.0"
         }
     }
 }
