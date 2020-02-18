@@ -19,7 +19,7 @@ def test_food_description_is_a_string():
     food_describer = FoodDescriber(
         "./british_food_generator/real_descriptions_of_food.txt"
     )
-    assert type(food_describer.generate_food_description()) == str
+    assert type(food_describer.generate_food_description("pork pie")) == str
 
 
 client = TestClient(app)

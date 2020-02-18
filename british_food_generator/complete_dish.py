@@ -14,7 +14,6 @@ class CompleteDishBuilder:
 
     def generate_dish(self) -> ClassicBritishDish:
         name = self.namer.generate_food_name()
-        desc = self.describer.generate_food_description()
-        return ClassicBritishDish(
-            name=name, description=desc, image=self.imager.image_path(name, desc)
-        )
+        desc = self.describer.generate_food_description(name)
+        image = self.imager.image_path(name, desc)
+        return ClassicBritishDish(name=name, description=desc, image=image)
