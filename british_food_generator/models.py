@@ -8,6 +8,7 @@ class ClassicBritishDish(BaseModel):
 
     name: str
     description: str
+    image: str
 
     class Config:
         schema_extra = {
@@ -15,6 +16,7 @@ class ClassicBritishDish(BaseModel):
                 {
                     "name": "roasted mash",
                     "description": "Finely mashed potato roasted in lard with a side of veg.",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Pork_pie_on_plate.jpg"
                 }
             ]
         }
