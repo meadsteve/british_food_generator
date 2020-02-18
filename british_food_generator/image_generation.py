@@ -1,5 +1,27 @@
+import logging
 import random
-from typing import List
+from typing import List, Set
+
+log = logging.getLogger(__name__)
+
+
+_non_food_words = {
+    "in",
+    "the",
+    "and",
+    "with"
+    "but",
+    "or",
+    "a",
+    "out",
+    "is",
+    "to",
+    "on",
+    "as",
+    "an",
+    "at",
+    "up"
+}
 
 
 class ImageGenerator:
@@ -19,6 +41,17 @@ class ImageGenerator:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Chorley_cake_and_Eccles_cake.jpg/1920px-Chorley_cake_and_Eccles_cake.jpg",
     ]
 
-    def image_path(self, _food_name: str, _food_desc: str) -> str:
-        # TODO: something cleverer than picking at random
-        return random.choice(self.images)
+    def image_path(self, food_name: str, food_desc: str) -> str:
+        candidate_words = set([word for word in food_desc.split(" ") + food_name.split(" ") if word not in _non_food_words])
+        possible_images = [image for image in self.images if _matches_words(image, candidate_words)]
+        log.info(f"Picking image from {len(possible_images)} candidates")
+        return random.choice(possible_images or self.images)
+
+
+def _matches_words(image_path: str, words: Set[str]):
+    normalised_path = image_path.lower()
+    for word in words:
+        if word in normalised_path:
+            log.debug(f"Matched image on {word}")
+            return True
+    return False

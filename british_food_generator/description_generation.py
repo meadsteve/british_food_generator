@@ -6,12 +6,12 @@ import markovify
 log = logging.getLogger(__name__)
 
 
-_exclude_words = [
+_exclude_words = {
     "in",
     "the",
     "and",
-    "with"
-]
+    "with",
+}
 
 
 class FoodDescriber:
