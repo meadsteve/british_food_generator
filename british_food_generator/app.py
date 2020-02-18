@@ -1,10 +1,12 @@
 import os
 
 from fastapi import FastAPI
+from lagom import Singleton
 from lagom.integrations.fast_api import FastApiContainer
 from starlette.requests import Request
 from starlette.templating import Jinja2Templates
 
+from british_food_generator.complete_dish import CompleteDishBuilder
 from british_food_generator.description_generation import FoodDescriber
 from british_food_generator.image_generation import ImageGenerator
 from british_food_generator.name_generation import FoodNamer
@@ -21,25 +23,18 @@ container = FastApiContainer()
 container[FoodDescriber] = FoodDescriber(
     os.path.join(__location__, "real_descriptions_of_food.txt")
 )
-container[FoodNamer] = FoodNamer()
-container[ImageGenerator] = ImageGenerator()
+container[CompleteDishBuilder] = Singleton(CompleteDishBuilder)
 
 
 @app.get("/", include_in_schema=False)
-def read_root(
-    request: Request,
-    namer=container.depends(FoodNamer),
-    describer=container.depends(FoodDescriber),
-    imager=container.depends(ImageGenerator),
-):
-    name = namer.generate_food_name()
-    desc = describer.generate_food_description()
+def read_root(request: Request, builder=container.depends(CompleteDishBuilder)):
+    dish = builder.generate_dish()
     return templates.TemplateResponse(
         "british_food.html",
         {
-            "name": name,
-            "description": desc,
-            "background_image": imager.image_path(name, desc),
+            "name": dish.name,
+            "description": dish.description,
+            "background_image": dish.image,
             "request": request,
         },
     )
@@ -57,13 +52,5 @@ def read_root(
         }
     },
 )
-def raw(
-    namer=container.depends(FoodNamer),
-    describer=container.depends(FoodDescriber),
-    imager=container.depends(ImageGenerator),
-):
-    name = namer.generate_food_name()
-    desc = describer.generate_food_description()
-    return ClassicBritishDish(
-        name=name, description=desc, image=imager.image_path(name, desc)
-    )
+def raw(builder=container.depends(CompleteDishBuilder)):
+    return builder.generate_dish()
