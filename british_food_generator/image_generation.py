@@ -9,8 +9,7 @@ _non_food_words = {
     "in",
     "the",
     "and",
-    "with"
-    "but",
+    "with" "but",
     "or",
     "a",
     "out",
@@ -20,7 +19,7 @@ _non_food_words = {
     "as",
     "an",
     "at",
-    "up"
+    "up",
 }
 
 
@@ -42,8 +41,16 @@ class ImageGenerator:
     ]
 
     def image_path(self, food_name: str, food_desc: str) -> str:
-        candidate_words = set([word for word in food_desc.split(" ") + food_name.split(" ") if word not in _non_food_words])
-        possible_images = [image for image in self.images if _matches_words(image, candidate_words)]
+        candidate_words = set(
+            [
+                word
+                for word in food_desc.split(" ") + food_name.split(" ")
+                if word not in _non_food_words
+            ]
+        )
+        possible_images = [
+            image for image in self.images if _matches_words(image, candidate_words)
+        ]
         log.info(f"Picking image from {len(possible_images)} candidates")
         return random.choice(possible_images or self.images)
 
