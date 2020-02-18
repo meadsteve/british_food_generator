@@ -86,5 +86,11 @@ class FoodNamer:
     def generate_food_name(self) -> str:
         result = None
         while result in self.banned_list or result is None:
-            result = f"{choose(self.name_part_ones)} {choose(self.joining_words)} {choose(self.name_part_twos)} {choose(self.suffix)}".strip()
+            result = _tidy_name(
+                f"{choose(self.name_part_ones)} {choose(self.joining_words)} {choose(self.name_part_twos)} {choose(self.suffix)}"
+            )
         return result
+
+
+def _tidy_name(food_name: str) -> str:
+    return food_name.strip().replace("  ", " ")
