@@ -8,8 +8,6 @@ from starlette.templating import Jinja2Templates
 
 from british_food_generator.complete_dish import CompleteDishBuilder
 from british_food_generator.description_generation import FoodDescriber
-from british_food_generator.image_generation import ImageGenerator
-from british_food_generator.name_generation import FoodNamer
 from british_food_generator.meta import VERSION, DESCRIPTION
 from british_food_generator.models import ClassicBritishDish, CheeckyNandos
 
