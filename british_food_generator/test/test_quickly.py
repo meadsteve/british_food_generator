@@ -13,6 +13,7 @@ def test_no_random_whitespace():
     food = FoodNamer().generate_food_name()
     assert food[-1] != " "
     assert food[0] != " "
+    assert "  " not in food
 
 
 def test_food_description_is_a_string():
