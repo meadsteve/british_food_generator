@@ -30,7 +30,7 @@ def read_root(
     request: Request,
     namer=container.depends(FoodNamer),
     describer=container.depends(FoodDescriber),
-    imager=container.depends(ImageGenerator)
+    imager=container.depends(ImageGenerator),
 ):
     name = namer.generate_food_name()
     desc = describer.generate_food_description()
@@ -60,12 +60,10 @@ def read_root(
 def raw(
     namer=container.depends(FoodNamer),
     describer=container.depends(FoodDescriber),
-    imager=container.depends(ImageGenerator)
+    imager=container.depends(ImageGenerator),
 ):
     name = namer.generate_food_name()
     desc = describer.generate_food_description()
     return ClassicBritishDish(
-        name=name,
-        description=desc,
-        image=imager.image_path(name, desc)
+        name=name, description=desc, image=imager.image_path(name, desc)
     )

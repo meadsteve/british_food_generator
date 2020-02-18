@@ -16,7 +16,7 @@ class ImageGenerator:
         "https://upload.wikimedia.org/wikipedia/commons/4/4b/YorkShireParkin.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Englishbreakfast.jpg/1280px-Englishbreakfast.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Cornish_cream_tea_2.jpg/1280px-Cornish_cream_tea_2.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Chorley_cake_and_Eccles_cake.jpg/1920px-Chorley_cake_and_Eccles_cake.jpg"
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Chorley_cake_and_Eccles_cake.jpg/1920px-Chorley_cake_and_Eccles_cake.jpg",
     ]
 
     def image_path(self, _food_name: str, _food_desc: str) -> str:
