@@ -15,9 +15,7 @@ from british_food_generator.models import ClassicBritishDish, CheeckyNandos
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 monitor = Monitor(0.25)
-app = FastAPI(
-    title="British Food Generator", version=VERSION, description=DESCRIPTION
-)
+app = FastAPI(title="British Food Generator", version=VERSION, description=DESCRIPTION)
 
 templates = Jinja2Templates(directory="templates")
 
@@ -65,7 +63,4 @@ def raw(builder=container.depends(CompleteDishBuilder)):
 
 @app.get("/health", summary="Stats on the health of the system")
 def health():
-    return {
-        "healthy": True,
-        "async_lag_ms": monitor.lag * 1_000
-    }
+    return {"healthy": True, "async_lag_ms": monitor.lag * 1_000}
