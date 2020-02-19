@@ -33,10 +33,10 @@ class Monitor:
             self.active_tasks = len(tasks)
             log.debug(f"Active tasks: {self.active_tasks}")
 
-            self._warn(loop, tasks)
+            self._warn(tasks)
         log.info("Monitoring async lag stopped")
 
-    def _warn(self, loop, tasks):
+    def _warn(self, tasks):
         if self.lag >= self._warn_threshold:
             tasks_count = collections.Counter(_get_coroutine_name(task) for task in tasks)
             log.warning(f"Slow loop detected. Lag: {self.lag * 1000}ms Tasks: {str(tasks_count)}")
