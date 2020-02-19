@@ -15,9 +15,9 @@ from british_food_generator.models import ClassicBritishDish, CheeckyNandos
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 monitor = Monitor(0.25)
-
-monitor.start()
-app = FastAPI(title="British Food Generator", version=VERSION, description=DESCRIPTION)
+app = FastAPI(
+    title="British Food Generator", version=VERSION, description=DESCRIPTION
+)
 
 templates = Jinja2Templates(directory="templates")
 
@@ -26,6 +26,11 @@ container[FoodDescriber] = FoodDescriber(
     os.path.join(__location__, "real_descriptions_of_food.txt")
 )
 container[CompleteDishBuilder] = Singleton(CompleteDishBuilder)
+
+
+@app.on_event("startup")
+def start_monitoring():
+    monitor.start()
 
 
 @app.get("/", include_in_schema=False)
