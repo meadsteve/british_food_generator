@@ -1,9 +1,7 @@
-import logging
 import random
 from typing import List, Set
 
-log = logging.getLogger(__name__)
-
+from british_food_generator.app_logging import log
 
 _non_food_words = {
     "in",

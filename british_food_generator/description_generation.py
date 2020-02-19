@@ -1,10 +1,8 @@
-import logging
 import random
 
 import markovify
 
-log = logging.getLogger(__name__)
-
+from british_food_generator.app_logging import log
 
 _exclude_words = {
     "in",
