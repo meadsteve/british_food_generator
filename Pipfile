@@ -9,6 +9,7 @@ fastapi = "*"
 markovify = "*"
 uvicorn = "*"
 jinja2 = "*"
+gunicorn = "*"
 
 [dev-packages]
 black = "==19.10b0"
