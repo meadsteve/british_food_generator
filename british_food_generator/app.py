@@ -56,3 +56,11 @@ def read_root(request: Request, builder=container.depends(CompleteDishBuilder)):
 )
 def raw(builder=container.depends(CompleteDishBuilder)):
     return builder.generate_dish()
+
+
+@app.get("/health", summary="Stats on the health of the system")
+def health():
+    return {
+        "healthy": True,
+        "async_lag_ms": monitor.lag * 1_000
+    }

@@ -1,5 +1,5 @@
 import logging
-from asyncio import get_running_loop, sleep
+from asyncio import get_running_loop, sleep, AbstractEventLoop
 
 log = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ class Monitor:
         loop = get_running_loop()
         loop.create_task(self._monitor_lag(loop))
 
-    async def _monitor_lag(self, loop):
+    async def _monitor_lag(self, loop: AbstractEventLoop):
         log.info("Monitoring async lag started")
         while loop.is_running():
             start = loop.time()
