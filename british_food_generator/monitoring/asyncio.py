@@ -1,4 +1,6 @@
+import collections
 from asyncio import get_running_loop, sleep, AbstractEventLoop, Task
+from typing import Any
 
 from british_food_generator.app_logging import log
 
@@ -7,8 +9,9 @@ class Monitor:
     lag: float = 0
     active_tasks: int = 0
 
-    def __init__(self, interval: float):
+    def __init__(self, interval: float, warn_threshold: float = 0.1):
         self._interval = interval
+        self._warn_threshold = warn_threshold
 
     def start(self):
         loop = get_running_loop()
@@ -25,10 +28,18 @@ class Monitor:
             time_slept = loop.time() - start
             self.lag = time_slept - self._interval
             log.debug(f"Current async lag (ms): {self.lag * 1000}")
-            self._count_tasks(loop)
+            self._warn(loop)
         log.info("Monitoring async lag stopped")
 
-    def _count_tasks(self, loop: AbstractEventLoop):
-        tasks = [task for task in Task.all_tasks(loop) if not task.done()]
-        self.active_tasks = len(tasks)
-        log.debug(f"Active task count: {self.active_tasks}")
+    def _warn(self, loop):
+        if self.lag >= self._warn_threshold:
+            tasks = (task for task in Task.all_tasks(loop) if not task.done())
+            tasks_count = collections.Counter(_get_coroutine_name(task) for task in tasks)
+            log.warning(f"Slow loop detected. Lag: {self.lag * 1000}ms Tasks: {str(tasks_count)}")
+
+
+def _get_coroutine_name(task: Any) -> str:
+    try:
+        return task._coro.__name__
+    except:
+        return "unknown"
