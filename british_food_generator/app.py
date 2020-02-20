@@ -66,5 +66,5 @@ def health():
     return {
         "healthy": True,
         "async_lag_ms": monitor.lag * 1_000,
-        "active_tasks": monitor.active_tasks
+        "active_tasks": monitor.active_tasks,
     }

@@ -38,8 +38,12 @@ class Monitor:
 
     def _warn(self, tasks):
         if self.lag >= self._warn_threshold:
-            tasks_count = collections.Counter(_get_coroutine_name(task) for task in tasks)
-            log.warning(f"Slow loop detected. Lag: {self.lag * 1000}ms Tasks: {str(tasks_count)}")
+            tasks_count = collections.Counter(
+                _get_coroutine_name(task) for task in tasks
+            )
+            log.warning(
+                f"Slow loop detected. Lag: {self.lag * 1000}ms Tasks: {str(tasks_count)}"
+            )
 
 
 def _get_coroutine_name(task: Any) -> str:
