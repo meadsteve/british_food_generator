@@ -16,7 +16,7 @@ class FoodDescriber:
     def __init__(self, file_path):
         with open(file_path) as f:
             text = f.read()
-        self._text_model = markovify.NewlineText(text, state_size=2)
+        self._text_model = markovify.Text(text)
 
     def generate_food_description(self, name: str):
         name_words = [
