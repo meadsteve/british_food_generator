@@ -19,9 +19,7 @@ class FoodDescriber:
         self._text_model = markovify.Text(text).compile()
 
     def generate_food_description(self, name: str):
-        name_words = [
-            word for word in name.lower().split(" ") if word not in _exclude_words
-        ]
+        name_words = self._get_name_words(name)
 
         sample = (self._desc_at_total_random() for _ in range(0, 500))
         scored_samples = (
@@ -32,6 +30,13 @@ class FoodDescriber:
 
         log.info(f"Returning a description with a score of {best_fit[1]}")
         return best_fit[0]
+
+    @staticmethod
+    def _get_name_words(name: str) -> List[str]:
+        # Split the name into the component words and
+        # remove any words that don't carry any meaning
+        raw_words = (word for word in name.lower().split(" ") if word not in _exclude_words)
+        return [word.replace("'s", "") for word in raw_words]
 
     def _desc_at_total_random(self):
         return self._text_model.make_short_sentence(200, tries=100)
