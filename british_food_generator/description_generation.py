@@ -35,7 +35,9 @@ class FoodDescriber:
     def _get_name_words(name: str) -> List[str]:
         # Split the name into the component words and
         # remove any words that don't carry any meaning
-        raw_words = (word for word in name.lower().split(" ") if word not in _exclude_words)
+        raw_words = (
+            word for word in name.lower().split(" ") if word not in _exclude_words
+        )
         return [word.replace("'s", "") for word in raw_words]
 
     def _desc_at_total_random(self):
