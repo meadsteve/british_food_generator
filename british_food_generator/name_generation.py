@@ -95,16 +95,10 @@ class FoodNamer:
         times=4,
     )
 
-    # Items which are either boring or rude should be excluded
-    banned_list = {"spotted dick", "fish pie"}
-
     def generate_food_name(self) -> str:
-        result = None
-        while result in self.banned_list or result is None:
-            result = _tidy_name(
-                f"{choose(self.name_part_ones)} {choose(self.joining_words)} {choose(self.name_part_twos)} {choose(self.suffix)}"
-            )
-        return result
+        return _tidy_name(
+            f"{choose(self.name_part_ones)} {choose(self.joining_words)} {choose(self.name_part_twos)} {choose(self.suffix)}"
+        )
 
 
 def _tidy_name(food_name: str) -> str:
