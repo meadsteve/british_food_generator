@@ -29,6 +29,7 @@ class ImageGenerator:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sausage-rolls.jpg/1280px-Sausage-rolls.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/1/18/SpottedDick.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/b/bf/Clotted_cream_%28cropped%29.JPG",
+        "https://upload.wikimedia.org/wikipedia/commons/4/4f/One_scotch_egg_%28No_jar_of_Marmite%29.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Homerton_College_-_Shepherd%27s_pie.jpg/1280px-Homerton_College_-_Shepherd%27s_pie.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Hot_cross_buns_-_fig_and_pecan.jpg/1280px-Hot_cross_buns_-_fig_and_pecan.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/4/4a/Flickr_bitboy_204619671--Cucumber_sandwiches_with_tea.jpg",
