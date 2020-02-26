@@ -43,6 +43,7 @@ class FoodNamer:
         "boiled",
         "lancashire",
         "devonshire",
+        "welsh",
         "roast",
         "pickled",
         "soused",
@@ -67,6 +68,7 @@ class FoodNamer:
         "scratchings",
         "squeak",
         "roast",
+        "rarebit",
     ]
 
     joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
