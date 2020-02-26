@@ -72,7 +72,7 @@ class FoodNamer:
         "squeak",
         "roast",
         "rarebit",
-        "sandwhich",
+        "sandwich",
     ]
 
     joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
