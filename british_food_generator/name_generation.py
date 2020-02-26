@@ -49,6 +49,7 @@ class FoodNamer:
         "roast",
         "pickled",
         "soused",
+        "scotch",
     ]
     name_part_twos = [
         "hole",
@@ -73,6 +74,7 @@ class FoodNamer:
         "roast",
         "rarebit",
         "sandwich",
+        "egg",
     ]
 
     joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
