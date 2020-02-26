@@ -1,97 +1,102 @@
 import random
-from typing import List, TypeVar
+from typing import List, TypeVar, Set
 
 
-def one_of_in_x_times(choices: List[str], times: int) -> List[str]:
-    return choices + ([""] * (times - 1) * len(choices))
+def one_of_in_x_times(choices: Set[str], times: int) -> List[str]:
+    return list(choices) + ([""] * (times - 1) * len(choices))
 
 
 T = TypeVar("T")
 
 
 def choose(choices: List[T]) -> T:
-    return choices[random.randint(0, len(choices) - 1)]
+    return random.choice(choices)
 
 
 class FoodNamer:
 
-    name_part_ones = [
-        "cucumber",
-        "corned",
-        "custard",
-        "treacle",
-        "spotted",
-        "toad",
-        "toddy",
-        "beef",
-        "clotted",
-        "bangers",
-        "ham",
-        "fish",
-        "fried",
-        "jellied",
-        "black",
-        "ploughman's",
-        "stottie",
-        "eccles",
-        "eaton",
-        "shepherd's",
-        "knickerbocker",
-        "angel",
-        "lardy",
-        "jam",
-        "bubble",
-        "stargazy",
-        "boiled",
-        "lancashire",
-        "devonshire",
-        "welsh",
-        "roast",
-        "pickled",
-        "soused",
-        "scotch",
-    ]
-    name_part_twos = [
-        "hole",
-        "pie",
-        "wellington",
-        "mash",
-        "tiddly",
-        "eels",
-        "pudding",
-        "stottie",
-        "pasty",
-        "tart",
-        "crumble",
-        "dick",
-        "glory",
-        "delight",
-        "cake",
-        "beef",
-        "rolly polly",
-        "scratchings",
-        "squeak",
-        "roast",
-        "rarebit",
-        "sandwich",
-        "egg",
-    ]
+    name_part_ones = list(
+        {
+            "cucumber",
+            "corned",
+            "custard",
+            "treacle",
+            "spotted",
+            "toad",
+            "toddy",
+            "beef",
+            "clotted",
+            "bangers",
+            "ham",
+            "fish",
+            "fried",
+            "jellied",
+            "black",
+            "ploughman's",
+            "stottie",
+            "eccles",
+            "eaton",
+            "shepherd's",
+            "knickerbocker",
+            "angel",
+            "lardy",
+            "jam",
+            "bubble",
+            "stargazy",
+            "boiled",
+            "lancashire",
+            "devonshire",
+            "welsh",
+            "roast",
+            "pickled",
+            "soused",
+            "scotch",
+        }
+    )
 
-    joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
+    name_part_twos = list(
+        {
+            "hole",
+            "pie",
+            "wellington",
+            "mash",
+            "tiddly",
+            "eels",
+            "pudding",
+            "stottie",
+            "pasty",
+            "tart",
+            "crumble",
+            "dick",
+            "glory",
+            "delight",
+            "cake",
+            "beef",
+            "rolly polly",
+            "scratchings",
+            "squeak",
+            "roast",
+            "rarebit",
+            "sandwich",
+            "egg",
+        }
+    )
+
+    joining_words = one_of_in_x_times({"in the", "and", "cream"}, times=3)
     suffix = one_of_in_x_times(
-        [
+        {
             "in gravy",
             "with gravy",
             "with chips",
             "with mint sauce",
             "with custard",
             "in blankets",
-        ],
+        },
         times=4,
     )
 
     # Items which are either boring or rude should be excluded
-    banned_list = ["spotted dick", "fish pie"]
+    banned_list = {"spotted dick", "fish pie"}
 
     def generate_food_name(self) -> str:
         result = None
