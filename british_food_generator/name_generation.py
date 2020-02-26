@@ -16,6 +16,7 @@ def choose(choices: List[T]) -> T:
 class FoodNamer:
 
     name_part_ones = [
+        "custard",
         "treacle",
         "spotted",
         "toad",
