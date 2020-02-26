@@ -16,6 +16,8 @@ def choose(choices: List[T]) -> T:
 class FoodNamer:
 
     name_part_ones = [
+        "cucumber",
+        "corned",
         "custard",
         "treacle",
         "spotted",
@@ -64,11 +66,13 @@ class FoodNamer:
         "glory",
         "delight",
         "cake",
+        "beef",
         "rolly polly",
         "scratchings",
         "squeak",
         "roast",
         "rarebit",
+        "sandwhich",
     ]
 
     joining_words = one_of_in_x_times(["in the", "and", "cream"], times=3)
