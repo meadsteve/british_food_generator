@@ -5,11 +5,11 @@ verify_ssl = true
 
 [packages]
 lagom = "~=0.6.6"
-fastapi = "*"
-markovify = "*"
-uvicorn = "*"
-jinja2 = "*"
-gunicorn = "*"
+fastapi = "~=0.49.0"
+markovify = "~=0.8.0"
+uvicorn = "~=0.11.3"
+jinja2 = "~=2.11.1"
+gunicorn = "~=20.0.4"
 
 [dev-packages]
 black = "==19.10b0"
