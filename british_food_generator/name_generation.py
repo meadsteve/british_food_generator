@@ -35,7 +35,7 @@ class FoodNamer:
             "ploughman's",
             "stottie",
             "eccles",
-            "eaton",
+            "eton",
             "shepherd's",
             "knickerbocker",
             "angel",
