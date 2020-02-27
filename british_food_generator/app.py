@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from lagom import Singleton
 from lagom.integrations.fast_api import FastApiContainer
 from starlette.requests import Request
+from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from british_food_generator.monitoring.asyncio import Monitor
@@ -68,3 +69,7 @@ def health():
         "async_lag_ms": monitor.lag * 1_000,
         "active_tasks": monitor.active_tasks,
     }
+
+
+# If no other route matches assume that it might be a static file
+app.mount("/", StaticFiles(directory="static_assets"), name="static")
