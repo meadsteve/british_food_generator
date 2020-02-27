@@ -1,6 +1,7 @@
 language: python
 python:
   - "3.8"
+  - "3.9-dev"
 env:
   global:
     - PIPENV_VENV_IN_PROJECT=1
@@ -9,4 +10,4 @@ install:
   - pip install pipenv
   - pipenv install --dev
 script:
-  - pipenv run mypy --ignore-missing-imports --strict-optional --check-untyped-defs british_food_generator/
+  - ./test.sh
