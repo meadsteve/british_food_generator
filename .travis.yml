@@ -9,4 +9,4 @@ install:
   - pip install pipenv
   - pipenv install --dev
 script:
-  - pipenv run mypy --ignore-missing-imports --strict-optional --check-untyped-defs british_food_generator/
+  - ./test.sh
