@@ -18,13 +18,12 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 monitor = Monitor(0.25)
 app = FastAPI(title="British Food Generator", version=VERSION, description=DESCRIPTION)
 
-templates = Jinja2Templates(directory="templates")
-
 container = FastApiContainer()
 container[FoodDescriber] = FoodDescriber(
     os.path.join(__location__, "real_descriptions_of_food.txt")
 )
 container[CompleteDishBuilder] = Singleton(CompleteDishBuilder)
+container[Jinja2Templates] = Singleton(lambda: Jinja2Templates(directory="templates"))
 
 
 @app.on_event("startup")
@@ -33,7 +32,11 @@ def start_monitoring():
 
 
 @app.get("/", include_in_schema=False)
-def read_root(request: Request, builder=container.depends(CompleteDishBuilder)):
+def read_root(
+    request: Request,
+    builder=container.depends(CompleteDishBuilder),
+    templates=container.depends(Jinja2Templates),
+):
     dish = builder.generate_dish()
     return templates.TemplateResponse(
         "british_food.html",
