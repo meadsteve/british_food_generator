@@ -1,7 +1,7 @@
 import os
 
 from fastapi import FastAPI
-from lagom import Singleton
+from lagom import Singleton, bind_to_container
 from lagom.integrations.fast_api import FastApiContainer
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
@@ -15,19 +15,24 @@ from british_food_generator.models import ClassicBritishDish, CheeckyNandos
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-monitor = Monitor(0.25)
 app = FastAPI(title="British Food Generator", version=VERSION, description=DESCRIPTION)
 
 container = FastApiContainer()
+
+# The describer is built on startup as it may take a while to scan the  file
 container[FoodDescriber] = FoodDescriber(
     os.path.join(__location__, "real_descriptions_of_food.txt")
 )
+
+# These other components can be singletons but we can defer creation until they are need the first time
 container[CompleteDishBuilder] = Singleton(CompleteDishBuilder)
 container[Jinja2Templates] = Singleton(lambda: Jinja2Templates(directory="templates"))
+container[Monitor] = Singleton(lambda: Monitor(interval=0.25))
 
 
 @app.on_event("startup")
-def start_monitoring():
+@bind_to_container(container)
+def start_monitoring(monitor: Monitor):
     monitor.start()
 
 
@@ -66,7 +71,7 @@ def raw(builder=container.depends(CompleteDishBuilder)):
 
 
 @app.get("/health", summary="Stats on the health of the system")
-def health():
+def health(monitor=container.depends(Monitor)):
     return {
         "healthy": True,
         "async_lag_ms": monitor.lag * 1_000,
