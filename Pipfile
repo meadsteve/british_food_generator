@@ -4,10 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-lagom = "~=0.7.0"
-fastapi = "~=0.54.1"
+lagom = "~=0.11.0"
+fastapi = "~=0.55.1"
 markovify = "~=0.8.0"
-uvicorn = "~=0.11.3"
+uvicorn = "~=0.11.5"
 jinja2 = "~=2.11.1"
 gunicorn = "~=20.0.4"
 aiofiles = "~=0.5.0"
