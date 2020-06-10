@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9e108ef93cd75f4b00a12b8b64fbc25132db76e757f5998638902285164d6aaa"
+            "sha256": "bd9ed3969dab4427493d987ad09edaa75358a5891cb6661ff06bd3dca4b78874"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -80,11 +80,11 @@
         },
         "lagom": {
             "hashes": [
-                "sha256:18f0cef7b7ef92898ca104763f5dd281237a8aeb93c7c3dcdcc43ed78d56fdb5",
-                "sha256:db3187a92d2b533cd2c77b507087396f58b85693d26deb0d946a0a844db59f3d"
+                "sha256:0d30e42743a083cfb8567c93d1925be5acb95e4836cc5b2d82fb6960480244ca",
+                "sha256:7ac7665b743d60035faf946a7820565d0238f6474d7b856d3a55850c843491f7"
             ],
             "index": "pypi",
-            "version": "==0.12.0"
+            "version": "==0.13.0"
         },
         "markovify": {
             "hashes": [

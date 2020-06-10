@@ -79,5 +79,15 @@ def health(monitor=container.depends(Monitor)):
     }
 
 
+@app.get("/debug", summary="raw tech data on how the service is working")
+def debug():
+    return {
+        "container": {
+            "reflection": container.reflection_cache_overview,
+            "definitions": [t.__qualname__ for t in container.defined_types]
+        }
+    }
+
+
 # If no other route matches assume that it might be a static file
 app.mount("/", StaticFiles(directory="static_assets"), name="static")
