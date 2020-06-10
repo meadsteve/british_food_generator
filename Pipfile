@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-lagom = "~=0.11.0"
+lagom = "~=0.12.0"
 fastapi = "~=0.55.1"
 markovify = "~=0.8.0"
 uvicorn = "~=0.11.5"
