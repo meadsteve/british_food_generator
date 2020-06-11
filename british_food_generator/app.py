@@ -84,7 +84,7 @@ def debug():
     return {
         "container": {
             "reflection": container.reflection_cache_overview,
-            "definitions": [t.__qualname__ for t in container.defined_types]
+            "definitions": [t.__qualname__ for t in container.defined_types],
         }
     }
 
