@@ -1,7 +1,7 @@
 import os
 
 from fastapi import FastAPI
-from lagom import Singleton, bind_to_container
+from lagom import Singleton, bind_to_container, injectable
 from lagom.integrations.fast_api import FastApiContainer
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
@@ -32,7 +32,7 @@ container[Monitor] = Singleton(lambda: Monitor(interval=0.25))
 
 @app.on_event("startup")
 @bind_to_container(container)
-def start_monitoring(monitor: Monitor):
+def start_monitoring(monitor: Monitor = injectable):
     monitor.start()
 
 
