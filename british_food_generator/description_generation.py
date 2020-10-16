@@ -21,7 +21,7 @@ class FoodDescriber:
     def generate_food_description(self, name: str):
         name_words = self._get_name_words(name)
 
-        sample = (self._desc_at_total_random() for _ in range(0, 500))
+        sample = (self._desc_at_total_random() for _ in range(500))
         scored_samples = (
             (desc, self._score_description(desc, name_words)) for desc in sample
         )
