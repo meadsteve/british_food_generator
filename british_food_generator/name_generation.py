@@ -1,7 +1,7 @@
 import random
 from typing import List, TypeVar, Set
 
-from constrained_types import add_constraint, ConstrainedString
+from british_food_generator.models import FoodName
 
 
 def one_of_in_x_times(choices: Set[str], times: int) -> List[str]:
@@ -13,11 +13,6 @@ T = TypeVar("T")
 
 def choose(choices: List[T]) -> T:
     return random.choice(choices)
-
-
-@add_constraint(lambda s: len(s) > 0, "The name should not be empty")
-class FoodName(ConstrainedString):
-    pass
 
 
 class FoodNamer:

@@ -1,9 +1,9 @@
 from typing import List
 
 import markovify
-from constrained_types import ConstrainedString, add_constraint
 
 from british_food_generator.app_logging import log
+from british_food_generator.models import FoodDescription
 
 _exclude_words = {
     "in",
@@ -11,11 +11,6 @@ _exclude_words = {
     "and",
     "with",
 }
-
-
-@add_constraint(lambda s: len(s) > 0, "The description should not be empty")
-class FoodDescription(ConstrainedString):
-    pass
 
 
 class FoodDescriber:
