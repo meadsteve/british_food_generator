@@ -1,6 +1,8 @@
 import random
 from typing import List, TypeVar, Set
 
+from constrained_types import add_constraint, ConstrainedString
+
 
 def one_of_in_x_times(choices: Set[str], times: int) -> List[str]:
     return list(choices) + ([""] * (times - 1) * len(choices))
@@ -11,6 +13,11 @@ T = TypeVar("T")
 
 def choose(choices: List[T]) -> T:
     return random.choice(choices)
+
+
+@add_constraint(lambda s: len(s) > 0, "The name should not be empty")
+class FoodName(ConstrainedString):
+    pass
 
 
 class FoodNamer:
@@ -95,11 +102,11 @@ class FoodNamer:
         times=4,
     )
 
-    def generate_food_name(self) -> str:
+    def generate_food_name(self) -> FoodName:
         return _tidy_name(
             f"{choose(self.name_part_ones)} {choose(self.joining_words)} {choose(self.name_part_twos)} {choose(self.suffix)}"
         )
 
 
-def _tidy_name(food_name: str) -> str:
-    return food_name.strip().replace("  ", " ")
+def _tidy_name(food_name: str) -> FoodName:
+    return FoodName(food_name.strip().replace("  ", " "))

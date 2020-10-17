@@ -1,6 +1,8 @@
 import random
 from typing import List, Set
 
+from constrained_types import ConstrainedString, add_constraint
+
 from british_food_generator.app_logging import log
 
 _non_food_words = {
@@ -20,6 +22,12 @@ _non_food_words = {
     "at",
     "up",
 }
+
+
+@add_constraint(lambda s: len(s) > 0, "There was an empty url")
+@add_constraint(lambda s: s.startswith("https://"), "The url should start with https")
+class ImgUrl(ConstrainedString):
+    pass
 
 
 class ImageGenerator:
@@ -44,7 +52,7 @@ class ImageGenerator:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Chorley_cake_and_Eccles_cake.jpg/1920px-Chorley_cake_and_Eccles_cake.jpg",
     ]
 
-    def image_path(self, food_name: str, food_desc: str) -> str:
+    def image_path(self, food_name: str, food_desc: str) -> ImgUrl:
         candidate_words = {
             word
             for word in food_desc.split(" ") + food_name.split(" ")
@@ -54,7 +62,7 @@ class ImageGenerator:
             image for image in self.images if _matches_words(image, candidate_words)
         ]
         log.info(f"Picking image from {len(possible_images)} candidates")
-        return random.choice(possible_images or self.images)
+        return ImgUrl(random.choice(possible_images or self.images))
 
 
 def _matches_words(image_path: str, words: Set[str]):

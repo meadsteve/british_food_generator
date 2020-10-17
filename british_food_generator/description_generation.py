@@ -1,6 +1,7 @@
 from typing import List
 
 import markovify
+from constrained_types import ConstrainedString, add_constraint
 
 from british_food_generator.app_logging import log
 
@@ -12,13 +13,18 @@ _exclude_words = {
 }
 
 
+@add_constraint(lambda s: len(s) > 0, "The description should not be empty")
+class FoodDescription(ConstrainedString):
+    pass
+
+
 class FoodDescriber:
     def __init__(self, file_path):
         with open(file_path) as f:
             text = f.read()
         self._text_model = markovify.Text(text).compile()
 
-    def generate_food_description(self, name: str):
+    def generate_food_description(self, name: str) -> FoodDescription:
         name_words = self._get_name_words(name)
 
         sample = (self._desc_at_total_random() for _ in range(500))
@@ -29,7 +35,7 @@ class FoodDescriber:
         best_fit = sorted_samples[0]
 
         log.info(f"Returning a description with a score of {best_fit[1]}")
-        return best_fit[0]
+        return FoodDescription(best_fit[0])
 
     @staticmethod
     def _get_name_words(name: str) -> List[str]:

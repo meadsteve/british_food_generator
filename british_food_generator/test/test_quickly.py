@@ -6,7 +6,7 @@ from british_food_generator.name_generation import FoodNamer
 
 
 def test_food_name_is_a_string():
-    assert type(FoodNamer().generate_food_name()) == str
+    assert isinstance(FoodNamer().generate_food_name(), str)
 
 
 def test_no_random_whitespace():
@@ -20,7 +20,7 @@ def test_food_description_is_a_string():
     food_describer = FoodDescriber(
         "./british_food_generator/real_descriptions_of_food.txt"
     )
-    assert type(food_describer.generate_food_description("pork pie")) == str
+    assert isinstance(food_describer.generate_food_description("pork pie"), str)
 
 
 client = TestClient(app)
