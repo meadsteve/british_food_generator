@@ -1,9 +1,8 @@
 import random
 from typing import List, Set
 
-from constrained_types import ConstrainedString, add_constraint
-
 from british_food_generator.app_logging import log
+from british_food_generator.models import ImgUrl
 
 _non_food_words = {
     "in",
@@ -22,12 +21,6 @@ _non_food_words = {
     "at",
     "up",
 }
-
-
-@add_constraint(lambda s: len(s) > 0, "There was an empty url")
-@add_constraint(lambda s: s.startswith("https://"), "The url should start with https")
-class ImgUrl(ConstrainedString):
-    pass
 
 
 class ImageGenerator:
