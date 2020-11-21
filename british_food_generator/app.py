@@ -1,8 +1,8 @@
 import os
 
 from fastapi import FastAPI
-from lagom import Singleton, bind_to_container, injectable
-from lagom.integrations.fast_api import FastApiContainer
+from lagom import Singleton, bind_to_container, injectable, Container
+from lagom.integrations.fast_api import FastApiIntegration
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -17,7 +17,7 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 
 app = FastAPI(title="British Food Generator", version=VERSION, description=DESCRIPTION)
 
-container = FastApiContainer()
+container = Container()
 
 # The describer is built on startup as it may take a while to scan the  file
 container[FoodDescriber] = FoodDescriber(
@@ -29,6 +29,11 @@ container[CompleteDishBuilder] = Singleton(CompleteDishBuilder)
 container[Jinja2Templates] = Singleton(lambda: Jinja2Templates(directory="templates"))
 container[Monitor] = Singleton(lambda: Monitor(interval=0.25))
 
+# For the debug endpoint we talk to the container itself.
+container[Container] = lambda c: c
+
+deps = FastApiIntegration(container)
+
 
 @app.on_event("startup")
 @bind_to_container(container)
@@ -39,8 +44,8 @@ def start_monitoring(monitor: Monitor = injectable):
 @app.get("/", include_in_schema=False)
 def read_root(
     request: Request,
-    builder=container.depends(CompleteDishBuilder),
-    templates=container.depends(Jinja2Templates),
+    builder=deps.depends(CompleteDishBuilder),
+    templates=deps.depends(Jinja2Templates),
 ):
     dish = builder.generate_dish()
     return templates.TemplateResponse(
@@ -66,12 +71,12 @@ def read_root(
         }
     },
 )
-def raw(builder=container.depends(CompleteDishBuilder)):
+def raw(builder=deps.depends(CompleteDishBuilder)):
     return builder.generate_dish()
 
 
 @app.get("/health", summary="Stats on the health of the system")
-def health(monitor=container.depends(Monitor)):
+def health(monitor=deps.depends(Monitor)):
     return {
         "healthy": True,
         "async_lag_ms": monitor.lag * 1_000,
@@ -80,11 +85,11 @@ def health(monitor=container.depends(Monitor)):
 
 
 @app.get("/debug", summary="raw tech data on how the service is working")
-def debug():
+def debug(active_container=deps.depends(Container)):
     return {
         "container": {
-            "reflection": container.reflection_cache_overview,
-            "definitions": [t.__qualname__ for t in container.defined_types],
+            "reflection": active_container.reflection_cache_overview,
+            "definitions": [t.__qualname__ for t in active_container.defined_types],
         }
     }
 
