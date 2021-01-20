@@ -2,6 +2,7 @@ import os
 
 from fastapi import FastAPI
 from lagom import Singleton, bind_to_container, injectable, Container
+from lagom.interfaces import ContainerDebugInfo
 from lagom.integrations.fast_api import FastApiIntegration
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
@@ -28,9 +29,6 @@ container[FoodDescriber] = FoodDescriber(
 container[CompleteDishBuilder] = Singleton(CompleteDishBuilder)
 container[Jinja2Templates] = Singleton(lambda: Jinja2Templates(directory="templates"))
 container[Monitor] = Singleton(lambda: Monitor(interval=0.25))
-
-# For the debug endpoint we talk to the container itself.
-container[Container] = lambda c: c
 
 deps = FastApiIntegration(container)
 
@@ -85,11 +83,11 @@ def health(monitor=deps.depends(Monitor)):
 
 
 @app.get("/debug", summary="raw tech data on how the service is working")
-def debug(active_container=deps.depends(Container)):
+def debug(active_container=deps.depends(ContainerDebugInfo)):
     return {
         "container": {
             "reflection": active_container.reflection_cache_overview,
-            "definitions": [t.__qualname__ for t in active_container.defined_types],
+            "definitions": [str(definition) for definition in active_container.defined_types],
         }
     }
 
