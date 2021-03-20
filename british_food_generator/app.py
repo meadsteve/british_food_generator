@@ -83,11 +83,13 @@ def health(monitor=deps.depends(Monitor)):
 
 
 @app.get("/debug", summary="raw tech data on how the service is working")
-def debug(active_container=deps.depends(ContainerDebugInfo)):
+def debug(active_container=deps.depends(ContainerDebugInfo)):  # type: ignore # There's a bug to fix here https://github.com/meadsteve/lagom/issues/19
     return {
         "container": {
             "reflection": active_container.reflection_cache_overview,
-            "definitions": [str(definition) for definition in active_container.defined_types],
+            "definitions": [
+                str(definition) for definition in active_container.defined_types
+            ],
         }
     }
 
